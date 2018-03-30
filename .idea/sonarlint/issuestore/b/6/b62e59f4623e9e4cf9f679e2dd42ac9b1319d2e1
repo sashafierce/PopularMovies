@@ -1,0 +1,14 @@
+
+Msquid:S1481",Remove this unused "fullUrl" local variable.(Ì›ùñúÿÿÿÿ8Ó©÷œž,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(éÈÚ8µð¶¡,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8Ïá£Âž,
+U"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(¿›Ý”8’ú‡›ž,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ëøð‚8Ü€Šû ,
+Isquid:S1185"(Remove this method to simply inherit it.(Ýßéàúÿÿÿÿ8ÉÊÐÿ ,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8Ü€Šû ,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ñ±™Œ8Ü€Šû ,
+gsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(¿›Ý”8’ú‡›ž,
+qsquid:S1192"PUse already-defined constant 'POPULARITY' instead of duplicating its value here.(¬À¶…ýÿÿÿÿ8þåó•¥,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÐçÔåþÿÿÿÿ8þåó•¥,
+Wsquid:S2696"6Make the enclosing method "static" or remove this set.(ÿÆžœøÿÿÿÿ8þåó•¥,
+Rsquid:S2696"6Make the enclosing method "static" or remove this set.(Ñžž×8þåó•¥,

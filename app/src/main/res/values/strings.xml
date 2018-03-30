@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="sort">Sort By</string>
+    <string name="sortkey">sort</string>
+    <string name="fetch">FETCHMOVIETASK</string>
+    <string name="vote">vote_average.desc</string>
+    <string name="pref">popularity.desc</string>
+    <string name="popularity">Popularity</string>
+    <string name="date">Release Date</string>
+    <string name="rating">Rating</string>
+    <string name="overview">Overview</string>
+    <string name="error">No Internet Connection!</string>
+
+</resources>

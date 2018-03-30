@@ -1,0 +1,9 @@
+
+‘"squid:ClassVariableVisibilityCheck"YMake clickListener a static final constant or non-public and provide accessors if needed.(á»ƒ°úÿÿÿÿ8¬Îô‹,
+Psquid:S1066"/Merge this if statement with the enclosing one.(Ó·ÖÛüÿÿÿÿ8Ò˜ÚŠ,
+"squid:ClassVariableVisibilityCheck"UMake imageView a static final constant or non-public and provide accessors if needed.(…Çªúÿÿÿÿ8„îï,
+"squid:ClassVariableVisibilityCheck"UMake imageView a static final constant or non-public and provide accessors if needed.(…Çªúÿÿÿÿ8ä©ñ,
+3squid:S2176"Rename this class.(Úª¸âùÿÿÿÿ8š®Ş,
+‹"squid:ClassVariableVisibilityCheck"SMake context a static final constant or non-public and provide accessors if needed.(±¹ï±úÿÿÿÿ8ÊéœŠ,
+}squid:S1488"bImmediately return this expression instead of assigning it to the temporary variable "viewHolder".(Ûóşx8¤€ìŠ,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¬¾á¼üÿÿÿÿ8îá£Â,
