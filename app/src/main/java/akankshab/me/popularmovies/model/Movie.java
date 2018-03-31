@@ -1,4 +1,4 @@
-package akankshab.me.popularmovies;
+package akankshab.me.popularmovies.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

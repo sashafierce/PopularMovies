@@ -1,7 +1,7 @@
 package akankshab.me.popularmovies;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
+
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,16 +32,16 @@ public class MovieDetailActivity extends AppCompatActivity {
         String imagePath = getIntent().getStringExtra("imagePath");
 
        // Log.d("DETAIL", "onCreate: "+ title);
-        poster = (ImageView) findViewById(R.id.detail_poster);
-        title = (TextView) findViewById(R.id.detail_title);
-        synopsis = (TextView) findViewById(R.id.detail_overview);
-        rating = (TextView) findViewById(R.id.detail_rating);
-        releaseDate = (TextView) findViewById(R.id.detail_date);
+        poster = findViewById(R.id.detail_poster);
+        title = findViewById(R.id.detail_title);
+        synopsis = findViewById(R.id.detail_overview);
+        rating = findViewById(R.id.detail_rating);
+        releaseDate = findViewById(R.id.detail_date);
         title.setText(name);
 
         loadPoster(imagePath);
-        releaseDate.setText("Release Date : " + date);
-        rating.setText( "Rating :  " + rating1 + "/10");
+        releaseDate.setText(getResources().getString(R.string.date) + date);
+        rating.setText( getResources().getString(R.string.ratingtext1) + rating1 + getResources().getString(R.string.ratingtext2));
         synopsis.setText(description);
 
 

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-import akankshab.me.popularmovies.Movie;
+import akankshab.me.popularmovies.model.Movie;
 
 /**
  * Created by akanksha on 28/2/18.

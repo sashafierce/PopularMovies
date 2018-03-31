@@ -7,5 +7,6 @@ import android.view.View;
  */
 
 public interface CustomItemClickListener {
+    @SuppressWarnings("UnnecessaryInterfaceModifier")
     public void onItemClick(View v, int position);
 }

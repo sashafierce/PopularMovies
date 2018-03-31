@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,9 +21,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,10 +34,11 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import akankshab.me.popularmovies.model.MovieResponse;
+
+import akankshab.me.popularmovies.model.Movie;
 import akankshab.me.popularmovies.utils.CustomItemClickListener;
 import akankshab.me.popularmovies.utils.MovieAdapter;
 
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by akanksha on 28/1/18.
@@ -56,8 +54,8 @@ public class MainFragment extends Fragment {
     private String prefOrder ;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    private List<akankshab.me.popularmovies.Movie> list;
-    private MovieAdapter adapter ;
+    private static List<Movie> list;
+    private static MovieAdapter adapter ;
     private static final int GRID_COLUMNS  = 2;
     private TextView errorMessage;
 
@@ -69,19 +67,19 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
         View rootView = layoutInflater.inflate(R.layout.activity_fragment,container,false);
         setHasOptionsMenu(true);
-        list = new ArrayList<akankshab.me.popularmovies.Movie>();
+        list = new ArrayList<Movie>();
         adapter = new MovieAdapter(getActivity(),list, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
             }
         });
-        recyclerView = (RecyclerView)rootView.findViewById(R.id.movie_recycler_view);
+        recyclerView = rootView.findViewById(R.id.movie_recycler_view);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         editor = preferences.edit();
         editor.apply();
 
-        errorMessage = (TextView)rootView.findViewById(R.id.message) ;
+        errorMessage = rootView.findViewById(R.id.message);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), GRID_COLUMNS));
         recyclerView.setAdapter(adapter);
@@ -167,7 +165,7 @@ public class MainFragment extends Fragment {
                 @Override
                 public void onItemClick(View v, int position) {
                     //long id = movie.get(position).getID();
-                    akankshab.me.popularmovies.Movie movie = adapter.getItem(position);
+                    Movie movie = adapter.getItem(position);
                     Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
                     //intent.putExtra("Movie", movie);
                     intent.putExtra("title", movie.getTitle());
@@ -205,44 +203,39 @@ public class MainFragment extends Fragment {
         super.onDestroy();
     }
 
-    public class FetchMoviesTask extends AsyncTask<URL , Void , List<akankshab.me.popularmovies.Movie> > {
-        private final String LOG_TAG = getActivity().getString(R.string.fetch);
+    public static class FetchMoviesTask extends AsyncTask<URL , Void , List<Movie> > {
+        //private final String LOG_TAG = getActivity().getString(R.string.fetch);
 
         @Override
-        protected List<akankshab.me.popularmovies.Movie> doInBackground(URL... params) {
+        protected List<Movie> doInBackground(URL... params) {
             return fetchMovies(params[0]);
         }
 
         @Override
-        protected void onPostExecute( List<akankshab.me.popularmovies.Movie> result) {
+        protected void onPostExecute( List<Movie> result) {
             super.onPostExecute(result);
             list = result;
             adapter.notifyDataSetChanged();
         }
 
         // return a list of Movies
-        public  List<akankshab.me.popularmovies.Movie> fetchMovies(URL requestUrl){
+        public  List<Movie> fetchMovies(URL requestUrl){
             URL url = requestUrl ;
 
             String jsonResponse = null;
             try {
                 jsonResponse = httpRequest(url);
-                if (jsonResponse != null )
-                    Log.d(LOG_TAG, "JSON received"+ jsonResponse);
-                else
-                    Log.d(LOG_TAG, "JSON received is null ");
-
+                if (jsonResponse == null ) {
+                    // Log.e(LOG_TAG, "error in JSON response");
+                }
 
             } catch (IOException e) {
-                Log.e(LOG_TAG, "error with HTTP request", e);
+                //Log.e(LOG_TAG, "IO error HTTP request", e);
             }
 
-            Log.e(LOG_TAG,""+  MovieResponse.parseJSON(jsonResponse));
-            //return  null;
             return MovieResponse.parseJSON(jsonResponse);
         }
 
-        // HTTP request to obtain movie list as JSON
         private  String httpRequest(URL url) throws IOException {
             String json= "";
             InputStream inputStream = null;
@@ -258,16 +251,14 @@ public class MainFragment extends Fragment {
                 if (urlConnection.getResponseCode() == 200){
                     inputStream = urlConnection.getInputStream();
                     json = inputStreamToString(inputStream);
-                    Log.d(LOG_TAG, "This is json recieved"+json);
-
+//                    Log.d(LOG_TAG, "This is json recieved"+json);
 
                 } else {
-                    Log.e(LOG_TAG, " response code error: " + urlConnection.getResponseCode());
+                   // Log.e(LOG_TAG, " response code error: " + urlConnection.getResponseCode());
                 }
             } catch (IOException e) {
                 // Log.d(LOG_TAG, ""+url);
-
-                Log.e(LOG_TAG, "error while fetching JSON", e);
+                //Log.e(LOG_TAG, "error while fetching JSON", e);
             } finally {
                 if (urlConnection != null){
                     urlConnection.disconnect();
@@ -282,7 +273,6 @@ public class MainFragment extends Fragment {
         }
 
         //  reference : https://stackoverflow.com/questions/10809731/httpresponse-and-bufferedreader
-
         private  String inputStreamToString(InputStream is) throws IOException
         {
             String line = "";
@@ -296,7 +286,7 @@ public class MainFragment extends Fragment {
                 }
             } catch (IOException e)
             {
-                Log.e(LOG_TAG, "error build string" + e.getMessage());
+                Log.e("", ""+ e.getMessage());
             }
             return result.toString();
         }

@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import akankshab.me.popularmovies.Movie;
+import akankshab.me.popularmovies.model.Movie;
 import akankshab.me.popularmovies.R;
 
 /**

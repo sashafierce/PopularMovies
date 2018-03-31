@@ -6,9 +6,12 @@
     <string name="vote">vote_average.desc</string>
     <string name="pref">popularity.desc</string>
     <string name="popularity">Popularity</string>
-    <string name="date">Release Date</string>
+    <string name="date">Release Date : </string>
     <string name="rating">Rating</string>
+    <string name="ratingtext1">Rating : </string>
+    <string name="ratingtext2">/10</string>
     <string name="overview">Overview</string>
     <string name="error">No Internet Connection!</string>
+    <string name="description">Movie Poster</string>
 
 </resources>

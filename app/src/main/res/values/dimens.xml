@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="parent_margin">16dp</dimen>
+    <dimen name="margin">10dp</dimen>
+    <dimen name="title_margin">20dp</dimen>
+    <dimen name="padding_bottom">20dp</dimen>
+    <dimen name="text_size">20sp</dimen>
 </resources>
