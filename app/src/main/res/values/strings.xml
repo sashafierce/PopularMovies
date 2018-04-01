@@ -3,8 +3,8 @@
     <string name="sort">Sort By</string>
     <string name="sortkey">sort</string>
     <string name="fetch">FETCHMOVIETASK</string>
-    <string name="vote">vote_average.desc</string>
-    <string name="pref">popularity.desc</string>
+    <string name="vote">top_rated</string>
+    <string name="pref">popular</string>
     <string name="popularity">Popularity</string>
     <string name="date">Release Date : </string>
     <string name="rating">Rating</string>

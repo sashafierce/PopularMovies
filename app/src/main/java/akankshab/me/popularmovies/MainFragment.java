@@ -48,10 +48,10 @@ public class MainFragment extends Fragment {
     private RecyclerView recyclerView;
 
     private final String SORT_KEY = "sort";
-    private final String RATING ="vote_average.desc";
-    private final String POPULARITY = "popularity.desc";
+    private final String RATING ="top_rated";
+    private final String POPULARITY = "popular";
 
-    private String prefOrder ;
+    private String prefOrder = "popular";
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     private static List<Movie> list;
@@ -131,17 +131,13 @@ public class MainFragment extends Fragment {
         return super.onOptionsItemSelected(menuItem);
     }
     private void populateList() {
-
-        final String MOVIEDB_BASE_URL =  "http://api.themoviedb.org/3/discover/movie?";
-        final String QUERY_SORT_BY = "sort_by";
+        //https://api.themoviedb.org/3/movie/popular?api_key=
+        final String MOVIEDB_BASE_URL =  "https://api.themoviedb.org/3/movie/";
         final String QUERY_APPKEY = "api_key";
-        final String QUERY_VOTE_COUNT = "vote_count.gte";
-        final String PARAM_MIN_VOTES = "50";
         String sortOrder = preferences.getString(SORT_KEY, prefOrder);
 
         Uri builtUri = Uri.parse(MOVIEDB_BASE_URL).buildUpon()
-                .appendQueryParameter(QUERY_SORT_BY, sortOrder)
-                .appendQueryParameter(QUERY_VOTE_COUNT, PARAM_MIN_VOTES)
+                .appendPath(sortOrder)
                 .appendQueryParameter(QUERY_APPKEY, BuildConfig.MOVIE_API_KEY)
                 .build();
 

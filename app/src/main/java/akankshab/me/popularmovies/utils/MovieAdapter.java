@@ -60,6 +60,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 Log.d("ADAPTER" , "" + selectedMovie.getPath());
                 Picasso.with(context)
                         .load(selectedMovie.getPath())
+                        .placeholder(R.drawable.ic_launcher_background) // the image to display while the url image is downloading
+                        .error(R.drawable.ic_launcher_foreground)
                         .into(holder.imageView);
             }
         }

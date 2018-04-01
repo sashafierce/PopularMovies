@@ -49,6 +49,9 @@ public class MovieDetailActivity extends AppCompatActivity {
     private void loadPoster(String path) {
         Picasso.with(getApplicationContext())
                 .load(path)
+                .placeholder(R.drawable.ic_launcher_background) // the image to display while the url image is downloading
+                .error(R.drawable.ic_launcher_foreground)
                 .into(poster);
+
     }
 }
